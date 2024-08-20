@@ -1,0 +1,40 @@
+{
+    "aulas": [
+      {
+        "professor": {
+          "nome": "Lucas Souza"
+        },
+        "assunto": "Matemática",
+        "alunos": [
+          { "nome": "Maria" },
+          { "nome": "Pedro" },
+          { "nome": "João" },
+          { "nome": "Ana" }
+        ]
+      },
+      {
+        "professor": {
+          "nome": "Ana Silva"
+        },
+        "assunto": "História",
+        "alunos": [
+          { "nome": "Mariana" },
+          { "nome": "Roberto" },
+          { "nome": "Fernanda" },
+          { "nome": "José" }
+        ]
+      },
+      {
+        "professor": {
+          "nome": "Carlos Mendes"
+        },
+        "assunto": "Química",
+        "alunos": [
+          { "nome": "Lucas" },
+          { "nome": "Bruna" },
+          { "nome": "Tiago" },
+          { "nome": "Carla" }
+        ]
+      }
+    ]
+  }
