@@ -1,0 +1,273 @@
+{
+    "query": "getPokemonsByHeight",
+    "height": "1.60 m",
+    "result": [
+        {
+            "_id": {
+                "$oid": "66ccd19c8c9514fab55b16df"
+            },
+            "id": 9,
+            "num": "009",
+            "name": "Blastoise",
+            "img": "http://www.serebii.net/pokemongo/pokemon/009.png",
+            "type": [
+                "Water"
+            ],
+            "height": "1.60 m",
+            "weight": "85.5 kg",
+            "candy": "Squirtle Candy",
+            "egg": "Not in Eggs",
+            "spawn_chance": 0.0067,
+            "avg_spawns": 0.67,
+            "spawn_time": "00:06",
+            "multipliers": null,
+            "weaknesses": [
+                "Electric",
+                "Grass"
+            ],
+            "prev_evolution": [
+                {
+                    "num": "007",
+                    "name": "Squirtle"
+                },
+                {
+                    "num": "008",
+                    "name": "Wartortle"
+                }
+            ]
+        },
+        {
+            "_id": {
+                "$oid": "66ccd19c8c9514fab55b1700"
+            },
+            "id": 42,
+            "num": "042",
+            "name": "Golbat",
+            "img": "http://www.serebii.net/pokemongo/pokemon/042.png",
+            "type": [
+                "Poison",
+                "Flying"
+            ],
+            "height": "1.60 m",
+            "weight": "55.0 kg",
+            "candy": "Zubat Candy",
+            "egg": "Not in Eggs",
+            "spawn_chance": 0.42,
+            "avg_spawns": 42,
+            "spawn_time": "02:15",
+            "multipliers": null,
+            "weaknesses": [
+                "Electric",
+                "Ice",
+                "Psychic",
+                "Rock"
+            ],
+            "prev_evolution": [
+                {
+                    "num": "041",
+                    "name": "Zubat"
+                }
+            ]
+        },
+        {
+            "_id": {
+                "$oid": "66ccd19c8c9514fab55b171a"
+            },
+            "id": 68,
+            "num": "068",
+            "name": "Machamp",
+            "img": "http://www.serebii.net/pokemongo/pokemon/068.png",
+            "type": [
+                "Fighting"
+            ],
+            "height": "1.60 m",
+            "weight": "130.0 kg",
+            "candy": "Machop Candy",
+            "egg": "Not in Eggs",
+            "spawn_chance": 0.0068,
+            "avg_spawns": 0.68,
+            "spawn_time": "02:55",
+            "multipliers": null,
+            "weaknesses": [
+                "Flying",
+                "Psychic",
+                "Fairy"
+            ],
+            "prev_evolution": [
+                {
+                    "num": "066",
+                    "name": "Machop"
+                },
+                {
+                    "num": "067",
+                    "name": "Machoke"
+                }
+            ]
+        },
+        {
+            "_id": {
+                "$oid": "66ccd19c8c9514fab55b171f"
+            },
+            "id": 73,
+            "num": "073",
+            "name": "Tentacruel",
+            "img": "http://www.serebii.net/pokemongo/pokemon/073.png",
+            "type": [
+                "Water",
+                "Poison"
+            ],
+            "height": "1.60 m",
+            "weight": "55.0 kg",
+            "candy": "Tentacool Candy",
+            "egg": "Not in Eggs",
+            "spawn_chance": 0.082,
+            "avg_spawns": 8.2,
+            "spawn_time": "23:36",
+            "multipliers": null,
+            "weaknesses": [
+                "Electric",
+                "Ground",
+                "Psychic"
+            ],
+            "prev_evolution": [
+                {
+                    "num": "072",
+                    "name": "Tentacool"
+                }
+            ]
+        },
+        {
+            "_id": {
+                "$oid": "66ccd19c8c9514fab55b1726"
+            },
+            "id": 80,
+            "num": "080",
+            "name": "Slowbro",
+            "img": "http://www.serebii.net/pokemongo/pokemon/080.png",
+            "type": [
+                "Water",
+                "Psychic"
+            ],
+            "height": "1.60 m",
+            "weight": "78.5 kg",
+            "candy": "Slowpoke Candy",
+            "egg": "Not in Eggs",
+            "spawn_chance": 0.036,
+            "avg_spawns": 3.6,
+            "spawn_time": "02:56",
+            "multipliers": null,
+            "weaknesses": [
+                "Electric",
+                "Grass",
+                "Bug",
+                "Ghost",
+                "Dark"
+            ],
+            "prev_evolution": [
+                {
+                    "num": "079",
+                    "name": "Slowpoke"
+                }
+            ]
+        },
+        {
+            "_id": {
+                "$oid": "66ccd19c8c9514fab55b1733"
+            },
+            "id": 93,
+            "num": "093",
+            "name": "Haunter",
+            "img": "http://www.serebii.net/pokemongo/pokemon/093.png",
+            "type": [
+                "Ghost",
+                "Poison"
+            ],
+            "height": "1.60 m",
+            "weight": "0.1 kg",
+            "candy": "Gastly Candy",
+            "candy_count": 100,
+            "egg": "Not in Eggs",
+            "spawn_chance": 0.052,
+            "avg_spawns": 5.2,
+            "spawn_time": "00:10",
+            "multipliers": [
+                1.56,
+                1.8
+            ],
+            "weaknesses": [
+                "Ground",
+                "Psychic",
+                "Ghost",
+                "Dark"
+            ],
+            "prev_evolution": [
+                {
+                    "num": "092",
+                    "name": "Gastly"
+                }
+            ],
+            "next_evolution": [
+                {
+                    "num": "094",
+                    "name": "Gengar"
+                }
+            ]
+        },
+        {
+            "_id": {
+                "$oid": "66ccd19c8c9514fab55b1737"
+            },
+            "id": 97,
+            "num": "097",
+            "name": "Hypno",
+            "img": "http://www.serebii.net/pokemongo/pokemon/097.png",
+            "type": [
+                "Psychic"
+            ],
+            "height": "1.60 m",
+            "weight": "75.6 kg",
+            "candy": "Drowzee Candy",
+            "egg": "Not in Eggs",
+            "spawn_chance": 0.1,
+            "avg_spawns": 10,
+            "spawn_time": "02:17",
+            "multipliers": null,
+            "weaknesses": [
+                "Bug",
+                "Ghost",
+                "Dark"
+            ],
+            "prev_evolution": [
+                {
+                    "num": "096",
+                    "name": "Drowzee"
+                }
+            ]
+        },
+        {
+            "_id": {
+                "$oid": "66ccd19c8c9514fab55b1767"
+            },
+            "id": 145,
+            "num": "145",
+            "name": "Zapdos",
+            "img": "http://www.serebii.net/pokemongo/pokemon/145.png",
+            "type": [
+                "Electric",
+                "Flying"
+            ],
+            "height": "1.60 m",
+            "weight": "52.6 kg",
+            "candy": "None",
+            "egg": "Not in Eggs",
+            "spawn_chance": 0,
+            "avg_spawns": 0,
+            "spawn_time": "N/A",
+            "multipliers": null,
+            "weaknesses": [
+                "Ice",
+                "Rock"
+            ]
+        }
+    ]
+}
