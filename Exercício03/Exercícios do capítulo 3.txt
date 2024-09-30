@@ -1,0 +1,102 @@
+----COMANDOS EM CYPHER----
+
+CREATE 
+  (p1:Pessoa:Engenheiro {id: 1, nome: 'Carlos', sexo: 'M', idade: 50}),
+  (p2:Pessoa {id: 2, nome: 'Ana', sexo: 'F', idade: 48}),
+  (p3:Pessoa:Medico {id: 3, nome: 'Pedro', sexo: 'M', idade: 28}),
+  (p4:Pessoa {id: 4, nome: 'Joao', sexo: 'M', idade: 26}),
+  (p5:Pessoa:Estudante {id: 5, nome: 'Maria', sexo: 'F', idade: 20}),
+  (p6:Pessoa {id: 6, nome: 'Lucas', sexo: 'M', idade: 18}),
+  (p7:Pessoa {id: 7, nome: 'Julia', sexo: 'F', idade: 16}),
+  (p8:Pessoa:Engenheiro {id: 8, nome: 'Roberto', sexo: 'M', idade: 35}),
+  (p9:Cachorro {id: 9, nome: 'Rex', raca: 'Golden Retriever', idade: 5}),
+  (p10:Gato {id: 10, nome: 'Mimi', raca: 'Siamês', idade: 3});
+
+MATCH (p1:Pessoa {id: 1}), (p3:Pessoa {id: 3})
+CREATE (p1)-[:PAI_DE {desde: 1998}]->(p3);
+
+MATCH (p1:Pessoa {id: 1}), (p4:Pessoa {id: 4})
+CREATE (p1)-[:PAI_DE {desde: 2000}]->(p4);
+
+MATCH (p1:Pessoa {id: 1}), (p5:Pessoa {id: 5})
+CREATE (p1)-[:PAI_DE {desde: 2004}]->(p5);
+
+MATCH (p2:Pessoa {id: 2}), (p3:Pessoa {id: 3})
+CREATE (p2)-[:MAE_DE {desde: 1998}]->(p3);
+
+MATCH (p2:Pessoa {id: 2}), (p4:Pessoa {id: 4})
+CREATE (p2)-[:MAE_DE {desde: 2000}]->(p4);
+
+MATCH (p2:Pessoa {id: 2}), (p5:Pessoa {id: 5})
+CREATE (p2)-[:MAE_DE {desde: 2004}]->(p5);
+
+MATCH (p3:Pessoa {id: 3}), (p4:Pessoa {id: 4})
+CREATE (p3)-[:IRMAO_DE]->(p4);
+
+MATCH (p4:Pessoa {id: 4}), (p5:Pessoa {id: 5})
+CREATE (p4)-[:IRMAO_DE]->(p5);
+
+MATCH (p3:Pessoa {id: 3}), (p8:Pessoa {id: 8})
+CREATE (p3)-[:NAMORA_COM {desde: 2020}]->(p8);
+
+MATCH (p1:Pessoa {id: 1}), (p9:Cachorro {id: 9})
+CREATE (p1)-[:DONO_DE]->(p9);
+
+MATCH (p2:Pessoa {id: 2}), (p10:Gato {id: 10})
+CREATE (p2)-[:DONO_DE]->(p10);
+
+----CÓDIGO EM PYTHON----
+
+from neo4j import GraphDatabase
+
+class FamilyGraphClient:
+
+    def __init__(self, uri, user, password):
+        self.driver = GraphDatabase.driver(uri, auth=(user, password))
+    
+    def close(self):
+        self.driver.close()
+    
+    # Consulta para encontrar os membros da familia com uma determinada profissao
+    def find_family_members_with_profession(self, profession):
+        with self.driver.session() as session:
+            result = session.run(f"MATCH (p:Pessoa:{profession}) RETURN p.nome AS nome")
+            for record in result:
+                print(f"{record['nome']}")
+    
+    # Consulta para encontrar os pais de uma pessoa
+    def find_parents_of_person(self, child_name):
+        with self.driver.session() as session:
+            result = session.run(
+                "MATCH (p:Pessoa)-[r:PAI_DE|MAE_DE]->(c:Pessoa {nome: $child_name}) "
+                "RETURN p.nome AS nome, type(r) AS relacao", 
+                child_name=child_name)
+            for record in result:
+                print(f"{record['nome']} e {record['relacao']} {child_name}.")
+    
+    # Consulta para encontrar um relacionamento de uma pessoa e desde quando
+    def find_relationship_of_person(self, person_name, relationship_type):
+        with self.driver.session() as session:
+            result = session.run(
+                f"MATCH (p:Pessoa {{nome: $person_name}})-[r:{relationship_type}]->(q:Pessoa) "
+                "RETURN q.nome AS nome, r.desde AS desde", 
+                person_name=person_name)
+            for record in result:
+                print(f"{person_name} namora com {record['nome']} desde {record['desde']}.")
+
+if __name__ == "__main__":
+
+    client = FamilyGraphClient("bolt://localhost:7687", "neo4j", "12345678")
+
+    # Consultas
+    print("Engenheiros na familia:")
+    client.find_family_members_with_profession("Engenheiro")
+    
+    print("\nPais de Joao:")
+    client.find_parents_of_person("Joao")
+    
+    print("\nQuem Pedro namora e desde quando:")
+    client.find_relationship_of_person("Pedro", "NAMORA_COM")
+
+    client.close()
+
