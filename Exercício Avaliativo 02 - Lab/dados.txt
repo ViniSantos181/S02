@@ -1,0 +1,32 @@
+CREATE(:Professor{nome:'Aline',ano_nasc:1998,cpf:'123.456.789-10'});
+CREATE(:Professora{nome:'Marisa',ano_nasc:1950,cpf:'012.345.678-91'});
+CREATE(:Professor{nome:'Elza',ano_nasc:1987,cpf:'901.234.567-89'});
+CREATE(:Professor{nome:'Marcelo',ano_nasc:1978,cpf:'890.123.456-78'});
+CREATE(:Professor{nome:'Renzo',ano_nasc:1956,cpf:'789.012.345-67'});
+CREATE(:Professor{nome:'Justino',ano_nasc:1995,cpf:'678.901.234-56'});
+
+CREATE(:Escola{nome:'Sanico Teles',endereço:'R. Olímpio Marquês',número:181});
+CREATE(:Escola{nome:'Sinhá Moreira',endereço:'Av. Dr. Delfim Moreira',número:509});
+CREATE(:Escola{nome:'Zenaide',endereço:'Conj. Hab. Gilberto Rossetti',número:332});
+CREATE(:Escola{nome:'Luis Machado Filho',endereço:'R. Luís Machado',número:100});
+
+CREATE(:Cidade{nome:'Santa Rita do Sapucaí', cep:'37540-000', população:43753});
+CREATE(:Cidade{nome:'Serra da Saudade', cep:'35617-000', população:776});
+CREATE(:Cidade{nome:'Cidadezinha', cep:'13737-635', população:68980});
+CREATE(:Estado{nome:'Minas Gerais', país:'Brasil'});
+
+MATCH(t:Professor{nome:'Renzo'}),(s:Escola{nome:'Luis Machado Filho'}) CREATE(t)-[:WORKS]->(s);
+MATCH(t:Professor{nome:'Justino'}),(s:Escola{nome:'Zenaide'}) CREATE(t)-[:WORKS]->(s);
+MATCH(t:Professor{nome:'Aline'}),(s:Escola{nome:'SinhÃ¡ Moreira'}) CREATE(t)-[:WORKS]->(s);
+MATCH(t:Professor{nome:'Marcelo'}),(s:Escola{nome:'Sanico Teles'}) CREATE(t)-[:WORKS]->(s);
+MATCH(t:Professor{nome:'Elza'}),(s:Escola{nome:'SinhÃ¡ Moreira'}) CREATE(t)-[:WORKS]->(s);
+MATCH(t:Professor{nome:'Marisa'}),(s:Escola{nome:'Sanico Teles'}) CREATE(t)-[:WORKS]->(s);
+
+MATCH(s:Escola{nome:'Sinhá Moreira'}),(c:Cidade{nome:'Santa Rita do Sapucaí'}) CREATE(s)-[:LOCATES]->(c);
+MATCH(s:Escola{nome:'Sanico Teles'}),(c:Cidade{nome:'Santa Rita do SapucaÃ'}) CREATE(s)-[:LOCATES]->(c);
+MATCH(s:Escola{nome:'Luis Machado Filho'}),(c:Cidade{nome:'Serra da Saudade'}) CREATE(s)-[:LOCATES]->(c);
+MATCH(s:Escola{nome:'Zenaide'}),(c:Cidade{nome:'Cidadezinha'}) CREATE(s)-[:LOCATES]->(c);
+
+MATCH(c:Cidade{nome:'Santa Rita do Sapucaí'}),(st:Estado{nome:'Minas Gerais'}) CREATE(c)-[:BELONGS]->(st);
+MATCH(c:Cidade{nome:'Serra da Saudade'}),(st:Estado{nome:'Minas Gerais'}) CREATE(c)-[:BELONGS]->(st);
+MATCH(c:Cidade{nome:'Cidadezinha'}),(st:Estado{nome:'Minas Gerais'}) CREATE(c)-[:BELONGS]->(st);
